@@ -5,3 +5,19 @@ RobotPallet_urdf_controller:
     publish_rate: 50
 
   # Position Controllers --------------------------------------
+  rueda_der_base_link_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rueda_der_base_link
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rueda_izq_base_link_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rueda_izq_base_link
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  horqu_der_base_link_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: horqu_der_base_link
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  horq_der_base_link_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: horq_der_base_link
+    pid: {p: 100.0, i: 0.01, d: 10.0}

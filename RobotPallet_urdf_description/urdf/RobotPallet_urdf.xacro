@@ -6,9 +6,9 @@
 <xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf.gazebo" />
 <link name="base_link">
   <inertial>
-    <origin rpy="0 0 0" xyz="6.765180111144575e-06 0.3630136553182086 0.11423952079885105"/>
-    <mass value="10.799554931225613"/>
-    <inertia ixx="3.458702" ixy="0.000432" ixz="-0.000132" iyy="1.123313" iyz="0.225141" izz="4.255486"/>
+    <origin rpy="0 0 0" xyz="-0.03714237438585855 0.3452934919578558 0.1391905292373332"/>
+    <mass value="13.404713841955479"/>
+    <inertia ixx="4.45282" ixy="-0.000196" ixz="0.000249" iyy="1.596267" iyz="0.566652" izz="5.300151"/>
   </inertial>
   <visual>
     <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -24,5 +24,173 @@
     </geometry>
   </collision>
 </link>
+
+<link name="caster_der_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.3469675086706943e-07 -2.6236593075879e-07 -2.2424357305414477e-07"/>
+    <mass value="0.0686419731684077"/>
+    <inertia ixx="1.8e-05" ixy="-0.0" ixz="-0.0" iyy="1.8e-05" iyz="0.0" izz="1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.172949 -1.301919 -0.016779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.172949 -1.301919 -0.016779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_izq_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.3469675189402572e-07 -2.6236593209105763e-07 -2.2424357305414477e-07"/>
+    <mass value="0.0686419731684077"/>
+    <inertia ixx="1.8e-05" ixy="0.0" ixz="0.0" iyy="1.8e-05" iyz="0.0" izz="1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.247051 -1.301919 -0.016779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.247051 -1.301919 -0.016779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rueda_der_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.07984369284904508 9.140869365320548e-06 -2.24333743623073e-07"/>
+    <mass value="1.466543117016407"/>
+    <inertia ixx="0.011241" ixy="1e-06" ixz="-0.0" iyy="0.005968" iyz="-0.0" izz="0.005968"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.331949 -0.128419 -0.103779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.331949 -0.128419 -0.103779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rueda_izq_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.07984322345553269 -9.665601226338527e-06 -2.24243566923632e-07"/>
+    <mass value="1.466543117016407"/>
+    <inertia ixx="0.011241" ixy="1e-06" ixz="-0.0" iyy="0.005968" iyz="0.0" izz="0.005968"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.406051 -0.128419 -0.103779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.406051 -0.128419 -0.103779"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horquilla_der_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03705123469674751 0.7275838198491724 -1.1358970988508945"/>
+    <mass value="3.4230357820659765"/>
+    <inertia ixx="0.535503" ixy="-0.0" ixz="-0.0" iyy="0.028455" iyz="0.000908" izz="0.56197"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.135898 -0.25514 -1.193698"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.135898 -0.25514 -1.193698"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horquilla_izq_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03705123469674723 0.7275838198491709 -1.1198745354401536"/>
+    <mass value="3.4230357820659765"/>
+    <inertia ixx="0.535503" ixy="-0.0" ixz="-0.0" iyy="0.028455" iyz="0.000908" izz="0.56197"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.284102 -0.25514 -1.193698"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.284102 -0.25514 -1.193698"/>
+    <geometry>
+      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="caster_der_base_link" type="fixed">
+  <origin rpy="0 0 0" xyz="0.172949 1.301919 0.016779"/>
+  <parent link="base_link"/>
+  <child link="caster_der_1"/>
+</joint>
+
+<joint name="caster_izq_base_link" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.247051 1.301919 0.016779"/>
+  <parent link="base_link"/>
+  <child link="caster_izq_1"/>
+</joint>
+
+<joint name="rueda_der_base_link" type="continuous">
+  <origin rpy="0 0 0" xyz="0.331949 0.128419 0.103779"/>
+  <parent link="base_link"/>
+  <child link="rueda_der_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="rueda_izq_base_link" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.406051 0.128419 0.103779"/>
+  <parent link="base_link"/>
+  <child link="rueda_izq_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="horqu_der_base_link" type="prismatic">
+  <origin rpy="0 0 0" xyz="0.135898 0.25514 1.193698"/>
+  <parent link="base_link"/>
+  <child link="horquilla_der_1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+  <limit effort="100" lower="0.0" upper="0.0" velocity="100"/>
+</joint>
+
+<joint name="horq_der_base_link" type="prismatic">
+  <origin rpy="0 0 0" xyz="-0.284102 0.25514 1.193698"/>
+  <parent link="base_link"/>
+  <child link="horquilla_izq_1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+  <limit effort="100" lower="0.0" upper="0.0" velocity="100"/>
+</joint>
 
 </robot>

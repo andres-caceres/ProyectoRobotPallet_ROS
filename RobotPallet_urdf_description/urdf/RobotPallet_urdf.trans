@@ -1,4 +1,48 @@
 <?xml version="1.0" ?>
 <robot name="RobotPallet_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+<transmission name="rueda_der_base_link_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rueda_der_base_link">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rueda_der_base_link_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="rueda_izq_base_link_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="rueda_izq_base_link">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="rueda_izq_base_link_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="horqu_der_base_link_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="horqu_der_base_link">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="horqu_der_base_link_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="horq_der_base_link_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="horq_der_base_link">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="horq_der_base_link_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
 </robot>
