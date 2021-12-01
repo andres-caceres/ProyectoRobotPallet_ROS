@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import rospy
 from geometry_msgs.msg import Twist
 import sys, select, os
@@ -22,12 +23,10 @@ CTRL-C to quit
 """
 
 e = """
-Communications Failed
+Error: Communication Failed
 """
 
 def getKey():
-    if os.name == 'nt':
-      return msvcrt.getch()
 
     tty.setraw(sys.stdin.fileno())
     rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
@@ -67,14 +66,12 @@ def checkLinearLimitVelocity(vel):
     vel = constrain(vel, -RP_MAX_LIN_VEL, RP_MAX_LIN_VEL)
     return vel
 
-RP_ef checkAngularLimitVelocity(vel):
+def checkAngularLimitVelocity(vel):
 
     vel = constrain(vel, -RP_MAX_ANG_VEL, RP_MAX_ANG_VEL)
     return vel
 
 if __name__=="__main__":
-    if os.name != 'nt':
-        settings = termios.tcgetattr(sys.stdin)
 
     rospy.init_node('robotpallet_teleop')
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
@@ -137,6 +134,3 @@ if __name__=="__main__":
         twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
-
-    if os.name != 'nt':
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
