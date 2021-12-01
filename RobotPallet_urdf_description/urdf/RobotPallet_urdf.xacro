@@ -3,7 +3,7 @@
 
 <xacro:include filename="$(find RobotPallet_urdf_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf.trans" />
-<xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf.gazebo" />
+<xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf_gazebo.xacro" />
 <link name="base_link">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.03714237438585855 0.3452934919578558 0.1391905292373332"/>
@@ -192,5 +192,26 @@
   <axis xyz="0.0 -0.0 -1.0"/>
   <limit effort="100" lower="0.0" upper="0.0" velocity="100"/>
 </joint>
+
+
+  <!-- RGB Camera representation -->
+
+  <link name="front_camera_link">
+    <visual>
+      <origin rpy="0.0 0 0" xyz="0 0 0.5"/>
+      <geometry>
+        <box size="0.1 0.1 0.5"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+
+  <joint name="base_front_camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_camera_link"/>
+    <origin xyz="0 0 1" rpy="0 0 0"/>
+  </joint>
+
+  <!-- End - RGB Camera representation -->
 
 </robot>
