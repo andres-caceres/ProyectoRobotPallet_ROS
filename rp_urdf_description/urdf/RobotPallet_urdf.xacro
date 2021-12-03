@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<robot name="RobotPallet_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="rp_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="$(find RobotPallet_urdf_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf.trans" />
-<xacro:include filename="$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf_gazebo.xacro" />
+<xacro:include filename="$(find rp_urdf_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find rp_urdf_description)/urdf/rp_urdf.trans" />
+<xacro:include filename="$(find rp_urdf_description)/urdf/rp_urdf_gazebo.xacro" />
 <link name="base_link">
   <inertial>
     <origin rpy="0 0 0" xyz="0.0 0.3452934919578558 0.1391905292373332"/>
@@ -13,14 +13,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -34,14 +34,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.172949 -1.301919 -0.016779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.172949 -1.301919 -0.016779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/caster_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -55,14 +55,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.247051 -1.301919 -0.016779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.247051 -1.301919 -0.016779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/caster_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -76,14 +76,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.331949 -0.128419 -0.103779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.331949 -0.128419 -0.103779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/rueda_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -97,14 +97,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.406051 -0.128419 -0.103779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.406051 -0.128419 -0.103779"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/rueda_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -118,14 +118,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.135898 -0.25514 -1.193698"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.135898 -0.25514 -1.193698"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/horquilla_der_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -139,14 +139,14 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.284102 -0.25514 -1.193698"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.284102 -0.25514 -1.193698"/>
     <geometry>
-      <mesh filename="package://RobotPallet_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://rp_urdf_description/meshes/horquilla_izq_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>

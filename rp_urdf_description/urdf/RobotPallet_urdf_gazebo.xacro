@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<robot name="RobotPallet_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="rp_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Begin - Gazebo definition -->
 

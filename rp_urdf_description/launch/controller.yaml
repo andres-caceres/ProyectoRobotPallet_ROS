@@ -1,4 +1,4 @@
-RobotPallet_urdf_controller:
+rp_urdf_controller:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController

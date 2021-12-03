@@ -11,10 +11,10 @@
   </include>
 
   <!-- Robot model -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find RobotPallet_urdf_description)/urdf/RobotPallet_urdf.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rp_urdf_description)/urdf/rp_urdf.xacro'" />
 
   <!-- Spawn the robot model -->
-  <node name="movil" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model RobotPallet_urdf -z 0.02" />
+  <node name="movil" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model rp_urdf -z 0.02" />
 
   <!-- Visualization of the robot using Rviz -->
   <!-- <param name="use_gui" value="true"/>
