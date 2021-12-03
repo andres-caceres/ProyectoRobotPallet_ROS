@@ -2,31 +2,46 @@
 import rospy
 from geometry_msgs.msg import Twist
 import sys, select, os
+if os.name == 'nt':
+  import msvcrt
+else:
+  import tty, termios
 
-RP_MAX_LIN_VEL = 0.50
-RP_MAX_ANG_VEL = 1.50
+BURGER_MAX_LIN_VEL = 50.22
+BURGER_MAX_ANG_VEL = 2.84
 
-LIN_VEL_STEP_SIZE = 0.02
-ANG_VEL_STEP_SIZE = 0.10
+WAFFLE_MAX_LIN_VEL = 0.26
+WAFFLE_MAX_ANG_VEL = 1.82
+
+LIN_VEL_STEP_SIZE = 5
+ANG_VEL_STEP_SIZE = 0.1
 
 msg = """
-RobotPallet Teleoperation Control
+Control Your TurtleBot3!
 ---------------------------
 Moving around:
         w
    a    s    d
         x
-w/x : increase/decrease linear velocity (RobotPallet : ~ 0.50)
-a/d : increase/decrease angular velocity (RobotPallet : ~ 1.50)
+
+w/x : increase/decrease linear velocity (Burger : ~ 0.22, Waffle and Waffle Pi : ~ 0.26)
+a/d : increase/decrease angular velocity (Burger : ~ 2.84, Waffle and Waffle Pi : ~ 1.82)
+
 space key, s : force stop
+
 CTRL-C to quit
 """
 
 e = """
-Error: Communication Failed
+Communications Failed
 """
 
 def getKey():
+    if os.name == 'nt':
+      if sys.version_info[0] >= 3:
+        return msvcrt.getch().decode()
+      else:
+        return msvcrt.getch()
 
     tty.setraw(sys.stdin.fileno())
     rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
@@ -62,19 +77,33 @@ def constrain(input, low, high):
     return input
 
 def checkLinearLimitVelocity(vel):
+    if turtlebot3_model == "burger":
+      vel = constrain(vel, -BURGER_MAX_LIN_VEL, BURGER_MAX_LIN_VEL)
+    elif turtlebot3_model == "waffle" or turtlebot3_model == "waffle_pi":
+      vel = constrain(vel, -WAFFLE_MAX_LIN_VEL, WAFFLE_MAX_LIN_VEL)
+    else:
+      vel = constrain(vel, -BURGER_MAX_LIN_VEL, BURGER_MAX_LIN_VEL)
 
-    vel = constrain(vel, -RP_MAX_LIN_VEL, RP_MAX_LIN_VEL)
     return vel
 
 def checkAngularLimitVelocity(vel):
+    if turtlebot3_model == "burger":
+      vel = constrain(vel, -BURGER_MAX_ANG_VEL, BURGER_MAX_ANG_VEL)
+    elif turtlebot3_model == "waffle" or turtlebot3_model == "waffle_pi":
+      vel = constrain(vel, -WAFFLE_MAX_ANG_VEL, WAFFLE_MAX_ANG_VEL)
+    else:
+      vel = constrain(vel, -BURGER_MAX_ANG_VEL, BURGER_MAX_ANG_VEL)
 
-    vel = constrain(vel, -RP_MAX_ANG_VEL, RP_MAX_ANG_VEL)
     return vel
 
 if __name__=="__main__":
+    if os.name != 'nt':
+        settings = termios.tcgetattr(sys.stdin)
 
-    rospy.init_node('robotpallet_teleop')
-    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    rospy.init_node('turtlebot3_teleop')
+    pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+
+    turtlebot3_model = rospy.get_param("model", "burger")
 
     status = 0
     target_linear_vel   = 0.0
@@ -87,21 +116,42 @@ if __name__=="__main__":
         while(1):
             key = getKey()
             if key == 'w' :
-                target_linear_vel = checkLinearLimitVelocity(target_linear_vel + LIN_VEL_STEP_SIZE)
-                status = status + 1
-                print(vels(target_linear_vel,target_angular_vel))
-            elif key == 'x' :
-                target_linear_vel = checkLinearLimitVelocity(target_linear_vel - LIN_VEL_STEP_SIZE)
-                status = status + 1
-                print(vels(target_linear_vel,target_angular_vel))
-            elif key == 'a' :
-                target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
-                status = status + 1
-                print(vels(target_linear_vel,target_angular_vel))
-            elif key == 'd' :
+              #  target_linear_vel = checkLinearLimitVelocity(target_linear_vel + LIN_VEL_STEP_SIZE)
+              #  status = status + 1
+               # print(vels(target_linear_vel,target_angular_vel))
+
+
                 target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
                 status = status + 1
                 print(vels(target_linear_vel,target_angular_vel))
+
+            elif key == 'x' :
+                #target_linear_vel = checkLinearLimitVelocity(target_linear_vel - LIN_VEL_STEP_SIZE)
+                #status = status + 1
+                #print(vels(target_linear_vel,target_angular_vel))
+
+                target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
+                status = status + 1
+                print(vels(target_linear_vel,target_angular_vel))
+            elif key == 'a' :
+                #target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
+                #status = status + 1
+                #print(vels(target_linear_vel,target_angular_vel))
+
+
+
+                target_linear_vel = checkLinearLimitVelocity(target_linear_vel - LIN_VEL_STEP_SIZE)
+                status = status + 1
+                print(vels(target_linear_vel,target_angular_vel))
+            elif key == 'd' :
+                #target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
+                #status = status + 1
+                #print(vels(target_linear_vel,target_angular_vel))
+
+                target_linear_vel = checkLinearLimitVelocity(target_linear_vel + LIN_VEL_STEP_SIZE)
+                status = status + 1
+                print(vels(target_linear_vel,target_angular_vel))
+
             elif key == ' ' or key == 's' :
                 target_linear_vel   = 0.0
                 control_linear_vel  = 0.0
@@ -134,3 +184,6 @@ if __name__=="__main__":
         twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
+
+    if os.name != 'nt':
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)

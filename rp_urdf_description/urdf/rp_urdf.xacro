@@ -167,7 +167,7 @@
   <origin rpy="0 0 0" xyz="0.331949 0.128419 0.103779"/>
   <parent link="base_link"/>
   <child link="rueda_der_1"/>
-  <axis xyz="1.0 0.0 0.0"/>
+  <axis xyz="-1.0 0.0 0.0"/>
 </joint>
 
 <joint name="rueda_izq_base_link" type="continuous">

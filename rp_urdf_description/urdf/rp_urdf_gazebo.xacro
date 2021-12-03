@@ -11,8 +11,8 @@
  <!-- Ruedas motrices plugin for gazebo -->
 
   <gazebo reference="rueda_der_1">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -22,8 +22,8 @@
   </gazebo>
 
   <gazebo reference="rueda_izq_1">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -38,8 +38,8 @@
  <!-- Ruedas caster plugin for gazebo -->
 
   <gazebo reference="caster_izq_1">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -49,8 +49,8 @@
   </gazebo>
 
   <gazebo reference="caster_der_1">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -65,13 +65,13 @@
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
 
       <alwaysOn>true</alwaysOn>
-      <updateRate>50</updateRate>
+      <updateRate>10</updateRate>
       <leftJoint>rueda_izq_base_link</leftJoint>
       <rightJoint>rueda_der_base_link</rightJoint>
       <wheelSeparation>0.840</wheelSeparation>
       <wheelDiameter>0.230</wheelDiameter>
-      <wheelAcceleration>0.1</wheelAcceleration>
-      <wheelTorque>20</wheelTorque>
+      <wheelAcceleration>0.02</wheelAcceleration>
+      <wheelTorque>1000</wheelTorque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
