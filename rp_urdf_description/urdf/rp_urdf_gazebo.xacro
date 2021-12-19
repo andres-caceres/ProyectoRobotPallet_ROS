@@ -16,7 +16,7 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -27,7 +27,7 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -38,23 +38,23 @@
  <!-- Ruedas caster plugin for gazebo -->
 
   <gazebo reference="caster_izq_1">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
   <gazebo reference="caster_der_1">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>0.5</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -89,6 +89,24 @@
 
   <gazebo reference="front_camera_link">
     <material>Gazebo/Blue</material>
+  </gazebo>
+<!-- IMU representation -->
+<gazebo reference="imu_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+   <!-- LIDAR IZQ representation -->
+  <gazebo reference="lidar_izq_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+   <!-- LIDAR CENTRAL representation -->
+  <gazebo reference="lidar_cen_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+    <!-- LIDAR DER representation -->
+  <gazebo reference="lidar_der_link">
+    <material>Gazebo/Red</material>
   </gazebo>
 
   
@@ -135,5 +153,75 @@
 </gazebo>
 
   <!-- End - Deep camera plugin -->
+
+  <!-- imu_link -->
+
+   <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  <!-- imu_link  end-->
+
+
+
+ 
+
+    <!-- laser2 -->
+  <gazebo reference="lidar_cen_link">
+    <sensor type="gpu_ray" name="head_hokuyo_sensor2">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+        <topicName>/rrbot/laser1/scan</topicName>
+        <frameName>lidar_cen_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+
+
+
 
 </robot>
